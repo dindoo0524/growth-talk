@@ -21,7 +21,7 @@ export default function SessionPage() {
 
   useEffect(() => {
     if (isComplete) {
-      router.push("/result");
+      router.push("/growth-talk/result");
     }
   }, [isComplete, router]);
 
@@ -40,7 +40,7 @@ export default function SessionPage() {
               className={`h-1 flex-1 rounded-full transition-colors duration-300 ${
                 i <= currentQuestionIndex
                   ? "bg-(--color-accent)"
-                  : "bg-(--color-border)"
+                  : "bg-white/10"
               }`}
             />
           ))}

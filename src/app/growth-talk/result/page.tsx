@@ -35,10 +35,10 @@ export default function ResultPage() {
     <div className="flex flex-1 flex-col justify-center">
       <div className="mb-10">
         <p className="mb-1 text-xs font-medium tracking-widest text-(--color-accent) uppercase">
-          META
+          성장톡
         </p>
         <h1 className="text-2xl font-semibold">오늘의 성장톡</h1>
-        <p className="mt-1 text-sm text-(--color-text-muted)">대화 완료</p>
+        <p className="mt-1 text-sm text-white/40">대화 완료</p>
       </div>
 
       <SessionSummary summary={data.result.reflectionSummary} />
@@ -49,7 +49,7 @@ export default function ResultPage() {
           href="/"
           className="w-full rounded-full bg-(--color-accent) py-3.5 text-center text-base font-medium text-white transition-opacity hover:opacity-90 active:opacity-80"
         >
-          처음으로
+          META로 돌아가기
         </Link>
       </div>
     </div>
