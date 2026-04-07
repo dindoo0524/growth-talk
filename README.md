@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/images/meta_lab_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="public/images/meta_lab_light.png">
+  <img alt="META Lab" src="public/images/meta_lab_dark.png" width="100%">
+</picture>
+
 # META Lab
 
 > 제약된 AI로 세상의 지식을 탐구하는 실험 저장소
