@@ -8,9 +8,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "META — 세상의 지식을 탐구하다",
+  title: "META Lab — 세상의 지식을 탐구하다",
   description:
-    "한눈팔지 못하는 환경에서, 세상의 지식을 탐구하는 AI 학습 서비스",
+    "제약된 AI로 세상의 지식을 탐구하는 실험 저장소",
 };
 
 export const viewport: Viewport = {

@@ -1,15 +1,15 @@
-import type { WorldConfig } from "./types";
+import type { ExperimentConfig } from "./types";
 
 const GENERAL_OFF_TOPIC = ["주식", "투자", "게임", "축구", "야구"];
 
-function isOffTopic(message: string, world: WorldConfig): boolean {
+function isOffTopic(message: string, experiment: ExperimentConfig): boolean {
   if (GENERAL_OFF_TOPIC.some((kw) => message.includes(kw))) {
     return true;
   }
-  if (world.id === "growth-talk") {
+  if (experiment.id === "growth-talk") {
     return ["코드", "프로그래밍", "맛집"].some((kw) => message.includes(kw));
   }
-  if (world.id === "spanish") {
+  if (experiment.id === "spanish-tutor") {
     return ["코드", "프로그래밍", "감정", "심리"].some((kw) =>
       message.includes(kw)
     );
@@ -122,18 +122,18 @@ function spanishReply(message: string): string {
 
 export function generateMockReply(
   message: string,
-  world: WorldConfig
+  experiment: ExperimentConfig
 ): string {
-  if (isOffTopic(message, world)) {
-    return world.offTopicMessage;
+  if (isOffTopic(message, experiment)) {
+    return experiment.offTopicMessage;
   }
 
-  switch (world.id) {
+  switch (experiment.id) {
     case "growth-talk":
       return growthTalkReply(message);
-    case "spanish":
+    case "spanish-tutor":
       return spanishReply(message);
     default:
-      return "아직 준비 중인 탐험이에요 ✨";
+      return "아직 준비 중인 실험이에요 ✨";
   }
 }

@@ -1,20 +1,20 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { worlds } from "@/content/worlds";
+import { experiments } from "@/content/experiments";
 
 const client = new Anthropic();
 
 export async function POST(req: Request) {
-  const { worldId, messages } = await req.json();
+  const { experimentId, messages } = await req.json();
 
-  const world = worlds[worldId];
-  if (!world) {
-    return Response.json({ error: "Unknown world" }, { status: 400 });
+  const experiment = experiments[experimentId];
+  if (!experiment) {
+    return Response.json({ error: "Unknown experiment" }, { status: 400 });
   }
 
   const stream = client.messages.stream({
     model: "claude-sonnet-4-20250514",
     max_tokens: 512,
-    system: world.systemPrompt,
+    system: experiment.systemPrompt,
     messages: messages.map((m: { role: string; content: string }) => ({
       role: m.role,
       content: m.content,

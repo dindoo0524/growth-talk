@@ -8,19 +8,22 @@ export default function Home() {
         <h1 className="text-5xl font-bold tracking-widest text-foreground">
           META
         </h1>
+        <p className="mt-2 text-xs font-medium tracking-widest text-white/25 uppercase">
+          Lab
+        </p>
         <p className="mt-4 text-sm tracking-wide text-white/40">
           세상의 지식을 탐구하다
         </p>
       </div>
 
-      {/* Explore worlds */}
+      {/* Explore experiments */}
       <div className="w-full space-y-4">
         <p className="mb-6 text-xs font-medium tracking-widest text-white/30 uppercase">
-          Explore
+          Experiments
         </p>
 
         <Link
-          href="/growth-talk"
+          href="/experiments/growth-talk"
           className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
@@ -38,14 +41,14 @@ export default function Home() {
         </Link>
 
         <Link
-          href="/spanish"
+          href="/experiments/spanish-tutor"
           className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
             🇪🇸
           </span>
           <div className="flex-1 text-left">
-            <p className="text-base font-medium text-foreground">스페인어</p>
+            <p className="text-base font-medium text-foreground">스페인어 튜터</p>
             <p className="mt-0.5 text-sm text-white/40">
               스페인어 회화 연습
             </p>
@@ -55,14 +58,14 @@ export default function Home() {
           </span>
         </Link>
 
-        {/* Future worlds - placeholder */}
+        {/* Future experiments - placeholder */}
         <div className="flex w-full items-center gap-4 rounded-2xl border border-(--color-border)/50 bg-(--color-card)/50 px-5 py-5 opacity-40">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-lg">
             🔭
           </span>
           <div className="flex-1 text-left">
             <p className="text-base font-medium">coming soon</p>
-            <p className="mt-0.5 text-sm text-white/30">새로운 탐험이 열립니다</p>
+            <p className="mt-0.5 text-sm text-white/30">새로운 실험이 열립니다</p>
           </div>
         </div>
       </div>

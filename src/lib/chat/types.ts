@@ -10,7 +10,7 @@ export interface StarterQuestion {
   text: string;
 }
 
-export interface WorldConfig {
+export interface ExperimentConfig {
   id: string;
   name: string;
   description: string;
