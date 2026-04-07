@@ -12,6 +12,8 @@ export interface StarterQuestion {
 
 export type ChatStyle = "iris" | "milo" | "noah";
 
+export type ConstraintLevel = "free" | "guided" | "strict";
+
 export interface ExperimentConfig {
   id: string;
   name: string;
