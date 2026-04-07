@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import type { ChatMessage, ExperimentConfig } from "@/lib/chat/types";
+import type { ChatMessage, ExperimentConfig, ChatStyle } from "@/lib/chat/types";
 import { generateMockReply } from "@/lib/chat/mock-chat";
 import { ChatBubble } from "./chat-bubble";
 import { ChatInput } from "./chat-input";
 import { StarterQuestions } from "./starter-questions";
+import { StyleSelector } from "./style-selector";
 
 interface ChatRoomProps {
   experiment: ExperimentConfig;
@@ -20,6 +21,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [streamingText, setStreamingText] = useState("");
+  const [style, setStyle] = useState<ChatStyle>("iris");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +41,11 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ experimentId: experiment.id, messages: apiMessages }),
+          body: JSON.stringify({
+            experimentId: experiment.id,
+            messages: apiMessages,
+            style,
+          }),
         });
 
         if (!res.ok) throw new Error("API error");
@@ -79,7 +85,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
         return null;
       }
     },
-    [experiment.id]
+    [experiment.id, style]
   );
 
   const sendMessage = useCallback(
@@ -117,6 +123,10 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
 
   return (
     <div className="flex flex-1 flex-col">
+      {/* Style selector */}
+      <StyleSelector style={style} onStyleChange={setStyle} />
+
+      {/* Messages area */}
       <div ref={scrollRef} className="flex flex-1 flex-col overflow-y-auto">
         {!hasMessages ? (
           <StarterQuestions
@@ -145,6 +155,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
         )}
       </div>
 
+      {/* Input */}
       <ChatInput onSend={sendMessage} disabled={isTyping} />
     </div>
   );
