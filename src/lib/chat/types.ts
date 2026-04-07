@@ -10,6 +10,8 @@ export interface StarterQuestion {
   text: string;
 }
 
+export type ChatStyle = "iris" | "milo" | "noah";
+
 export interface ExperimentConfig {
   id: string;
   name: string;
