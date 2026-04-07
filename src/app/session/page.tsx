@@ -32,16 +32,32 @@ export default function SessionPage() {
   if (currentQuestion) {
     return (
       <div className="flex flex-1 flex-col justify-center">
-        <QuestionCard
-          questionNumber={currentQuestionIndex + 1}
-          totalQuestions={3}
-          questionText={currentQuestion.text}
-        />
-        <AnswerInput
-          key={currentQuestion.id}
-          onSubmit={answerQuestion}
-          isLast={state.step === SessionStep.Q3}
-        />
+        {/* Progress bar */}
+        <div className="mb-8 flex gap-2">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className={`h-1 flex-1 rounded-full transition-colors duration-300 ${
+                i <= currentQuestionIndex
+                  ? "bg-(--color-accent)"
+                  : "bg-(--color-border)"
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="animate-fade-in">
+          <QuestionCard
+            questionNumber={currentQuestionIndex + 1}
+            totalQuestions={3}
+            questionText={currentQuestion.text}
+          />
+          <AnswerInput
+            key={currentQuestion.id}
+            onSubmit={answerQuestion}
+            isLast={state.step === SessionStep.Q3}
+          />
+        </div>
       </div>
     );
   }
