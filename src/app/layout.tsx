@@ -8,9 +8,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "META — 성장톡",
+  title: "META — 세상의 지식을 탐구하다",
   description:
-    "하루 10분, 제약된 AI 대화로 오늘을 돌아보고 내일의 한 걸음을 정하는 성장 도구",
+    "한눈팔지 못하는 환경에서, 세상의 지식을 탐구하는 AI 학습 서비스",
 };
 
 export const viewport: Viewport = {
@@ -27,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <main className="flex flex-1 flex-col w-full max-w-md mx-auto px-5 py-8">
+        <div className="stars" />
+        <main className="relative z-10 flex flex-1 flex-col w-full max-w-md mx-auto px-5 py-8">
           {children}
         </main>
       </body>

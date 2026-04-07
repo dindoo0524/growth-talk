@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #faf9f7;
-  --color-text: #2d2d2d;
-  --color-text-muted: #6b6b6b;
-  --color-accent: #8b7355;
-  --color-accent-light: #f0ebe4;
-  --color-border: #e8e4df;
-  --color-card: #ffffff;
+  --color-bg: #0a0b10;
+  --color-bg-elevated: #12131a;
+  --color-text: #e8e8ec;
+  --color-text-muted: rgba(255, 255, 255, 0.45);
+  --color-accent: #a78bfa;
+  --color-accent-dim: rgba(167, 139, 250, 0.15);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-card: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
@@ -20,6 +21,70 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Stars background */
+.stars {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  box-shadow:
+    /* Layer 1: small dim stars */
+    24px 80px 0 -0.5px rgba(255, 255, 255, 0.3),
+    80px 160px 0 -0.5px rgba(255, 255, 255, 0.2),
+    160px 40px 0 -0.5px rgba(255, 255, 255, 0.35),
+    240px 200px 0 -0.5px rgba(255, 255, 255, 0.25),
+    320px 120px 0 -0.5px rgba(255, 255, 255, 0.3),
+    60px 300px 0 -0.5px rgba(255, 255, 255, 0.2),
+    180px 350px 0 -0.5px rgba(255, 255, 255, 0.35),
+    300px 280px 0 -0.5px rgba(255, 255, 255, 0.15),
+    50px 500px 0 -0.5px rgba(255, 255, 255, 0.25),
+    200px 450px 0 -0.5px rgba(255, 255, 255, 0.3),
+    350px 380px 0 -0.5px rgba(255, 255, 255, 0.2),
+    100px 600px 0 -0.5px rgba(255, 255, 255, 0.3),
+    280px 550px 0 -0.5px rgba(255, 255, 255, 0.25),
+    20px 700px 0 -0.5px rgba(255, 255, 255, 0.2),
+    340px 650px 0 -0.5px rgba(255, 255, 255, 0.35);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars::after {
+  width: 1.5px;
+  height: 1.5px;
+  box-shadow:
+    /* Layer 2: offset twinkling stars */
+    130px 50px 0 -0.5px rgba(255, 255, 255, 0.4),
+    40px 220px 0 -0.5px rgba(255, 255, 255, 0.25),
+    260px 90px 0 -0.5px rgba(255, 255, 255, 0.3),
+    90px 400px 0 -0.5px rgba(255, 255, 255, 0.35),
+    310px 320px 0 -0.5px rgba(255, 255, 255, 0.2),
+    170px 180px 0 -0.5px rgba(255, 255, 255, 0.4),
+    220px 520px 0 -0.5px rgba(255, 255, 255, 0.25),
+    370px 460px 0 -0.5px rgba(255, 255, 255, 0.3),
+    150px 680px 0 -0.5px rgba(255, 255, 255, 0.2),
+    60px 580px 0 -0.5px rgba(255, 255, 255, 0.35);
+  animation: twinkle 5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in {
