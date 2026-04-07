@@ -37,6 +37,24 @@ export default function Home() {
           </span>
         </Link>
 
+        <Link
+          href="/spanish"
+          className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
+        >
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
+            🇪🇸
+          </span>
+          <div className="flex-1 text-left">
+            <p className="text-base font-medium text-foreground">스페인어</p>
+            <p className="mt-0.5 text-sm text-white/40">
+              스페인어 회화 연습
+            </p>
+          </div>
+          <span className="text-white/20 transition-colors group-hover:text-(--color-accent)">
+            →
+          </span>
+        </Link>
+
         {/* Future worlds - placeholder */}
         <div className="flex w-full items-center gap-4 rounded-2xl border border-(--color-border)/50 bg-(--color-card)/50 px-5 py-5 opacity-40">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-lg">
