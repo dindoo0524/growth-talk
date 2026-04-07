@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import type { ChatMessage, ExperimentConfig, ChatStyle } from "@/lib/chat/types";
+import type { ChatMessage, ExperimentConfig, ChatStyle, ConstraintLevel } from "@/lib/chat/types";
 import { generateMockReply } from "@/lib/chat/mock-chat";
 import { ChatBubble } from "./chat-bubble";
 import { ChatInput } from "./chat-input";
 import { StarterQuestions } from "./starter-questions";
 import { StyleSelector } from "./style-selector";
+import { ConstraintSelector } from "./constraint-selector";
 
 interface ChatRoomProps {
   experiment: ExperimentConfig;
@@ -22,6 +23,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [streamingText, setStreamingText] = useState("");
   const [style, setStyle] = useState<ChatStyle>("iris");
+  const [constraintLevel, setConstraintLevel] = useState<ConstraintLevel>("guided");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +47,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
             experimentId: experiment.id,
             messages: apiMessages,
             style,
+            constraintLevel,
           }),
         });
 
@@ -85,7 +88,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
         return null;
       }
     },
-    [experiment.id, style]
+    [experiment.id, style, constraintLevel]
   );
 
   const sendMessage = useCallback(
@@ -125,6 +128,8 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
     <div className="flex flex-1 flex-col">
       {/* Style selector */}
       <StyleSelector style={style} onStyleChange={setStyle} />
+      {/* Constraint selector */}
+      <ConstraintSelector level={constraintLevel} onLevelChange={setConstraintLevel} />
 
       {/* Messages area */}
       <div ref={scrollRef} className="flex flex-1 flex-col overflow-y-auto">
