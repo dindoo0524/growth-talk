@@ -133,6 +133,44 @@ function oneLineReply(): string {
   return pick(ONE_LINE);
 }
 
+// --- Five Whys responses ---
+
+const FIVE_WHYS: string[] = [
+  "왜 그렇게 느끼는 것 같아요?",
+  "그건 왜 중요한 거예요?",
+  "그 뒤에 더 깊은 이유가 있을까요?",
+  "왜 하필 지금 그 생각이 드는 걸까요?",
+  "그게 아니었다면 어땠을 것 같아요?",
+  "그 근본적인 이유는 뭘까요?",
+];
+
+function fiveWhysReply(): string {
+  return pick(FIVE_WHYS);
+}
+
+// --- Emotion Translator responses ---
+
+const EMOTION_TRANSLATOR: string[] = [
+  "그 감정을 좀 더 들여다보면...\n\n• 답답함 — 출구가 안 보이는 느낌\n• 무력감 — 내가 바꿀 수 없다는 느낌\n\n어떤 게 더 가까워요?",
+  "그 안에 여러 감정이 섞여 있을 수 있어요.\n\n• 서운함 — 기대가 어긋난 느낌\n• 외로움 — 혼자라는 느낌\n\n어느 쪽이 더 와닿아요?",
+  "한 단어로 말하기 어려운 감정이네요. 혹시...\n\n• 불안 — 앞이 안 보이는 느낌\n• 권태 — 반복에 지친 느낌\n\n어떤 쪽인 것 같아요?",
+];
+
+function emotionTranslatorReply(): string {
+  return pick(EMOTION_TRANSLATOR);
+}
+
+// --- Both Sides responses ---
+
+const BOTH_SIDES: string[] = [
+  "👍 한편으로는:\n• 새로운 가능성이 열릴 수 있어요\n• 현재의 답답함에서 벗어날 기회\n\n👎 다른 한편으로는:\n• 안정성을 잃을 위험\n• 새로운 곳도 완벽하진 않을 수 있어요\n\n당신은 어떻게 생각해요?",
+  "👍 찬성 측:\n• 성장과 변화의 기회\n• 후회하지 않을 선택일 수 있어요\n\n👎 반대 측:\n• 타이밍이 맞는지 고민이 필요해요\n• 현재 상황에서 더 얻을 것이 있을 수도\n\n당신은 어느 쪽에 더 마음이 가요?",
+];
+
+function bothSidesReply(): string {
+  return pick(BOTH_SIDES);
+}
+
 // --- Main export ---
 
 export function generateMockReply(
@@ -150,6 +188,12 @@ export function generateMockReply(
       return spanishReply(message);
     case "one-line":
       return oneLineReply();
+    case "five-whys":
+      return fiveWhysReply();
+    case "emotion-translator":
+      return emotionTranslatorReply();
+    case "both-sides":
+      return bothSidesReply();
     default:
       return "아직 준비 중인 실험이에요 ✨";
   }

@@ -76,16 +76,47 @@ export default function Home() {
           </span>
         </Link>
 
-        {/* Future experiments - placeholder */}
-        <div className="flex w-full items-center gap-4 rounded-2xl border border-(--color-border)/50 bg-(--color-card)/50 px-5 py-5 opacity-40">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-lg">
-            🔭
+        <Link
+          href="/experiments/five-whys"
+          className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
+        >
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
+            🔍
           </span>
           <div className="flex-1 text-left">
-            <p className="text-base font-medium">coming soon</p>
-            <p className="mt-0.5 text-sm text-white/30">새로운 실험이 열립니다</p>
+            <p className="text-base font-medium text-foreground">역질문</p>
+            <p className="mt-0.5 text-sm text-white/40">왜? 를 끝까지 파고들다</p>
           </div>
-        </div>
+          <span className="text-white/20 transition-colors group-hover:text-(--color-accent)">→</span>
+        </Link>
+
+        <Link
+          href="/experiments/emotion-translator"
+          className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
+        >
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
+            🎭
+          </span>
+          <div className="flex-1 text-left">
+            <p className="text-base font-medium text-foreground">감정 번역기</p>
+            <p className="mt-0.5 text-sm text-white/40">감정에 정확한 이름을 붙이다</p>
+          </div>
+          <span className="text-white/20 transition-colors group-hover:text-(--color-accent)">→</span>
+        </Link>
+
+        <Link
+          href="/experiments/both-sides"
+          className="group flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-card) px-5 py-5 transition-all hover:border-(--color-accent)/30 hover:bg-(--color-accent-dim)"
+        >
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent-dim) text-lg">
+            ⚖️
+          </span>
+          <div className="flex-1 text-left">
+            <p className="text-base font-medium text-foreground">양면 사고</p>
+            <p className="mt-0.5 text-sm text-white/40">모든 주제에는 두 면이 있다</p>
+          </div>
+          <span className="text-white/20 transition-colors group-hover:text-(--color-accent)">→</span>
+        </Link>
       </div>
     </div>
   );
