@@ -16,6 +16,25 @@ export type ConstraintLevel = "free" | "guided" | "strict";
 
 export type ExperimentCategory = "감정" | "사고" | "학습" | "기록";
 
+export interface ChatSession {
+  id: string;
+  experimentId: string;
+  messages: ChatMessage[];
+  style: ChatStyle;
+  constraintLevel: ConstraintLevel;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface UserStats {
+  totalSessions: number;
+  totalMessages: number;
+  currentStreak: number;
+  longestStreak: number;
+  lastActiveDate: string; // YYYY-MM-DD
+  experimentsUsed: string[];
+}
+
 export interface ExperimentConfig {
   id: string;
   name: string;
