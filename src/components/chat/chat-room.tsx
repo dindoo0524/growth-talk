@@ -32,6 +32,7 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
   const [style, setStyle] = useState<ChatStyle>("iris");
   const [constraintLevel, setConstraintLevel] = useState<ConstraintLevel>("guided");
   const [showHistory, setShowHistory] = useState(false);
+  const [pastSessions, setPastSessions] = useState<ChatSession[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +40,12 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping, streamingText]);
 
-  // Auto-save session to localStorage when messages change
+  // Load past sessions (async)
+  useEffect(() => {
+    getSessionsByExperiment(experiment.id).then(setPastSessions);
+  }, [experiment.id, messages.length]);
+
+  // Auto-save session when messages change (fire-and-forget)
   useEffect(() => {
     if (messages.length === 0) return;
     const session: ChatSession = {
@@ -156,14 +162,13 @@ export function ChatRoom({ experiment }: ChatRoomProps) {
       setIsTyping(false);
       setStreamingText("");
 
-      // Record activity for streak
+      // Record activity for streak (fire-and-forget)
       recordActivity(experiment.id, 2);
     },
     [messages, experiment, sendWithAI]
   );
 
   const hasMessages = messages.length > 0;
-  const pastSessions = getSessionsByExperiment(experiment.id);
   const hasPastSessions = pastSessions.length > 0;
 
   return (

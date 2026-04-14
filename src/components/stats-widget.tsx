@@ -19,7 +19,7 @@ export function StatsWidget() {
   const [stats, setStats] = useState<UserStats>(getDefaultStats);
 
   useEffect(() => {
-    setStats(getStats());
+    getStats().then(setStats);
   }, []);
 
   // Don't render if no activity yet
